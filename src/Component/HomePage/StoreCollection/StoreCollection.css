@@ -1,0 +1,30 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 2fr));
+    grid-auto-flow: dense;
+    grid-gap: 1rem;
+    margin: .6rem 0;
+
+}
+
+.StoreCollection {
+    margin: 1rem;
+
+}
+
+.StoreCollection h3 {
+    text-align: center;
+
+    font-size: 2rem;
+}
+
+.grid_id {
+    text-align: center;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+
+
+    }

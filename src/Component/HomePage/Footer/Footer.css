@@ -1,0 +1,9 @@
+/* .footerLogo img{
+width: 20rem;
+height: 20rem;
+} */
+.footer_signup input{
+    border: none;
+    border-bottom: 1px solid red;
+    background: none;
+}

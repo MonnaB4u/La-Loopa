@@ -1,0 +1,22 @@
+.ProrityBox {
+    border: 1px solid white;
+    margin: 3rem;
+    padding: 1rem;
+    width: 400px;
+    height: 14rem;
+    background: #1f1e1e;
+}
+
+.Prority {
+    display: flex;
+    justify-content: end;
+
+}
+.ProrityBox button{
+    background-color: rgb(105, 88, 7);
+    height: 2rem;
+    width: 20rem;
+    color: white;
+    letter-spacing:.3rem;
+    cursor: pointer;
+}

@@ -1,0 +1,23 @@
+.traverse {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 2rem;
+    font-size: 2rem;
+    color: rgb(82, 34, 70);
+
+    }
+
+.traverse_btn {
+    background: rgb(82, 34, 70);
+    color: aliceblue;
+    height: 50px;
+    width: 120px;
+    font-size: 1rem;
+    border-radius: 3px;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    -ms-border-radius:;
+    -o-border-radius:;
+}
