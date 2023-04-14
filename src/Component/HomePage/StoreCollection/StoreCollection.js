@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './StoreCollection.css'
 import Data from '../../FakeData/StoreCollection'
 import { useNavigate } from 'react-router-dom';
+import Prac from '../../Prac';
 
 const StoreCollection = () => {
     const [data] = useState(Data)
@@ -9,6 +10,7 @@ const StoreCollection = () => {
     console.log(navigate)
     return (
        <div className="">
+
          <div className="StoreCollection text_c">
             <h3>LA LOOP STORE COLLECTION</h3>
             <div className="grid" style={{margin:"3rem 0rem"}}>

@@ -2,81 +2,66 @@ import React, { useState } from 'react';
 import Navbar from '../HomePage/Navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
 
+import { faAdd, faDeleteLeft, faMinus, faTrashAlt, } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaCcAmazonPay, FaCcAmex, FaCcApplePay, FaCcPaypal, FaCcVisa } from "react-icons/fa";
+
+
 const Booking = () => {
 
-const [userName, setUserName] = useState ( () => {
- const savedItem = localStorage.getItem("product");
-const parsedItem = JSON.parse(savedItem);
-return parsedItem || "";
-});
-
-const navigate=useNavigate()
+    const [getLocalData, setLocalData] = useState(() => {
+        const savedItem = localStorage.getItem("product");
+        const parsedItem = JSON.parse(savedItem);
+        return parsedItem || "";
+    });
 
 
-console.log(userName)
+    const handleDcart = e => {
+        let newPost = [...getLocalData];
+        newPost.splice(0, 1);
+        setLocalData(newPost);
+    }
+
+
     return (
         <div className="bg">
-            <Navbar/>
-            <div className="AddFitness">
-                <div className="flex1" style={{ margin: "2rem" }}>
-                    <div className="">
-                        {
-                            !userName
-                                ?
-                                <div className="" >
-                                    <img style={{ height: "60%" }} src="https://cdn.shopify.com/s/files/1/0735/8876/9073/products/382288286879580160_900x.jpg?v=1678808883 " alt="" />
-                                </div>
-                                :
-                                <div className="" >
-                                    <img style={{ height: "60%" }} src={userName.img} alt="" />
-                                </div>
+            <Navbar />
+            <div className="cart_items">
 
-                        }
+                <div className="cart_tems-heading card text_c">
+                    <h2>Shopping Cart[2 items]</h2>
+                    <div className="cart_items-action">
+                        <label htmlFor="select">
+                            <input type="checkbox" name='select' id="select" />
+                            Select all items
+                        </label>
+                        <button> <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon> </button>
+                        <button>Shop More </button>
                     </div>
-
-
                 </div>
 
-                <div className="flex1" >
-                    <div className="">
-                        {
-                            !userName
-                                ?
-                                <div className="text_c">
-                                    <h2> 11 IN KIT UPGRADE RESISTANCE LOOP BANDS HOME EXERCISE SPORTS FITNESS
-                                        Regular price</h2>
-                                    <span>$37.97</span>
+                {
+                    getLocalData.map((each,i)=>
+                        <div className="cart_item card text_c space-around">
+                            <input type="checkbox" />
+                            <img className="cart_items-img" src={each.img} alt="" />
+
+                            <div className="cart-item-description">
+                                <h3 className="production_name">{each.name} </h3>
+                                <h4 className="production_price">{each.price}</h4>
+                            </div>
+
+                            <div className="cart_item-action">
+                                <button className="btn "> <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon> </button>
+                                <div className="">
+                                    <button onClick={() => handleDcart(each)} className="btn "> <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon> </button>
+                                    <span style={{ margin: "0rem 1rem" }}>{each.length}</span>
+                                    <button  className="btn "> <FontAwesomeIcon icon={faAdd}></FontAwesomeIcon> </button>
                                 </div>
-                                :
-                                <div className="text_c">
-                                    <h2 style={{ fontSize: "30px" }}>{userName.name}</h2>
-                                    <span className="text_c">Price: ${userName.price}</span>
-                                </div>
+                            </div>
+                        </div>)
+                }
 
-                        }
-                    </div>
-                    <div className="brd"></div>
-
-                    <div className="space_between text_c">
-
-                        {/* <div className="cartNum">
-                            <span onClick={()=>handleDcart(CartData)} handleDcart style={{ borderRight: "1px solid white", cursor: "pointer" }} >-</span>
-                            <span>{CartData.length}</span>
-                            <span onClick={() => handlePrd(CartData)} style={{ borderLeft: "1px solid white", cursor: "pointer" }}>+</span>
-                        </div> */}
-
-                        <div className="">
-                            {/* <Cart cart={cart} /> */}
-                        </div>
-
-                    </div>
-
-                    <div className="cartBtn">
-                        <button  style={{ marginTop: "1.5rem" }}>Add to Cart</button>
-                        <button style={{ marginTop: "1.5rem", background: "rgb(67, 67, 225)" }}>Buy with shop</button>
-                    </div>
-
-                </div>
             </div>
 
         </div>

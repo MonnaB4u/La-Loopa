@@ -13,7 +13,7 @@ import Cart from '../HomePage/Cart/Cart';
 
 const ProductCard = () => {
 
- const [data] = useState(Alldata)
+    const [data] = useState(Alldata)
     const { id } = useParams()
     const CartData = data.find(data => data.id === id)
 
@@ -33,8 +33,8 @@ const ProductCard = () => {
         setProductPieces(newPost);
     }
 
-    const total =productPieces.reduce((total, prd) => total + prd.price, 0);
-console.log(total);
+    const total = productPieces.reduce((total, prd) => total + prd.price, 0);
+    console.log(total);
     let shipping = 0
     if (total > 700) {
         shipping = 0
@@ -43,25 +43,26 @@ console.log(total);
     } else if (shipping > 250) {
         shipping = 40
     }
-    let grandTotal =Math.floor(total+shipping)
+    let grandTotal = Math.floor(total + shipping)
 
- const [local, setLocal] = useState([])
+    const [local, setLocal] = useState([])
     const [message, setmessage] = useState("")
 
 
-  const handleAddFav = (e) => {
-        localStorage.setItem("product", local.length < 1 ? JSON.stringify(e) : setmessage("product already exist"));
+    const handleAddFav = (e) => {
+        let save=[...productPieces,e]
+        localStorage.setItem("product", local.length < 1 ? JSON.stringify(save) : setmessage("product already exist"));
         const pd = [...local, e]
         setLocal(pd)
         navigate("/booking")
     }
 
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
     return (
         <div className="bg">
             <Navbar />
- <main>
+            <main>
                 <div className="cart flex-center">
                     <div className="cart_items">
 
@@ -80,7 +81,6 @@ console.log(total);
                         </div>
 
                         <div className="cart_item card text_c space-around">
-
                             <input type="checkbox" />
                             <img className="cart_items-img" src={CartData.img} alt="" />
 
@@ -94,12 +94,12 @@ console.log(total);
                                 <button className="btn "> <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon> </button>
                                 <div className="">
                                     <button onClick={() => handleDcart(CartData)} className="btn "> <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon> </button>
-                                    <span style={{margin:"0rem 1rem"}}>{productPieces.length}</span>
+                                    <span style={{ margin: "0rem 1rem" }}>{productPieces.length}</span>
                                     <button onClick={() => handlePrd(CartData)} className="btn "> <FontAwesomeIcon icon={faAdd}></FontAwesomeIcon> </button>
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
 
                     <div className="cart_payment">
@@ -120,10 +120,10 @@ console.log(total);
                                 <p>Total Cost</p>
                                 <p>${grandTotal.toFixed(2)}</p>
                             </div>
-                     <div className="cartBtn" style={{display: "block"}}>
-                        <button onClick={()=>handleAddFav(CartData)} style={{ marginTop: "1.5rem" }}>Add to Cart</button>
-                        <button style={{ marginTop: "1.5rem", background: "rgb(67, 67, 225)" }}>Buy with shop</button>
-                    </div>
+                            <div className="cartBtn" style={{ display: "block" }}>
+                                <button onClick={() => handleAddFav(CartData)} style={{ marginTop: "1.5rem" }}>Add to Cart</button>
+                                <button style={{ marginTop: "1.5rem", background: "rgb(67, 67, 225)" }}>Buy with shop</button>
+                            </div>
                         </div>
 
                         <div className="cart_payment-methods card text_c">

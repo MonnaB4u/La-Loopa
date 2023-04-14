@@ -51,6 +51,7 @@ const Slider = () => {
 
 
             </Swiper >
+
         </div >
     );
 };
